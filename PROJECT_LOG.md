@@ -156,3 +156,7 @@ Observed 33/47 candidate chunks in extraction while the UI displayed only Workin
 ## 2026-11-27 — CampusDecoded rename and Render preparation
 
 User selected CampusDecoded, authorized GitHub repository rename and website branding, and chose a free temporary Render demo. Repository renamed to Shreshth114/CampusDecoded. Added host/port/worker deployment configuration, opt-in data/model-cache paths, a temporary-storage disclosure, version constraints and model-cache build helper. No local datasets, credentials or indexes are migrated. Render workspace confirmed by user. Cloud deployment/secret configuration and memory checks remain pending; see docs/RENDER_DEPLOYMENT.md for concrete scope and results.
+
+## 2026-11-27 — CampusDecoded live
+
+Repository and website renamed; PR #4 merged. Free Singapore Render service is live at https://campusdecoded.onrender.com. User-authorized local Groq/admin environment values transferred privately. 484 Python tests pass; hosted synthetic upload/index/chunk/real Groq answer/admin auth checks pass and test workspace was deleted. No local real-policy dataset migrated and no paid resources created. Free storage remains ephemeral. Full results and limitations: docs/RENDER_DEPLOYMENT.md.

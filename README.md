@@ -1,5 +1,7 @@
 # CampusDecoded
 
+**[Open the live demo](https://campusdecoded.onrender.com)** · Free temporary storage; keep your original PDFs.
+
 An institution-independent prototype for finding campus rules in uploaded documents and answering student questions with cited evidence.
 
 The application combines a FastAPI backend, a browser dashboard, local text embeddings and Chroma vector storage. It supports Raw retrieval, HyDE search expansion and reciprocal-rank Fusion. Generated HyDE text is a search key; it is never authoritative answer evidence.
