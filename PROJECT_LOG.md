@@ -160,3 +160,7 @@ User selected CampusDecoded, authorized GitHub repository rename and website bra
 ## 2026-11-27 — CampusDecoded live
 
 Repository and website renamed; PR #4 merged. Free Singapore Render service is live at https://campusdecoded.onrender.com. User-authorized local Groq/admin environment values transferred privately. 484 Python tests pass; hosted synthetic upload/index/chunk/real Groq answer/admin auth checks pass and test workspace was deleted. No local real-policy dataset migrated and no paid resources created. Free storage remains ephemeral. Full results and limitations: docs/RENDER_DEPLOYMENT.md.
+
+## 2026-11-27 — Live workflow verification and GitHub About link
+
+34/34 synthetic functional checks passed on the deployed site, including authentication, upload/index/chunk/original/citation access, Raw answering, genuine Raw/HyDE/Fusion retrieval comparison, rule extraction, conflicts, document changes, empty/invalid-input handling and cross-workspace denial. Both disposable workspaces deleted; no real-policy labels or approvals changed. GitHub About homepage set to the live Render URL. Limits and exact checks: docs/DEPLOYED_WEBSITE_CHECK.md.
