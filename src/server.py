@@ -12,7 +12,7 @@ from typing import Literal
 
 from fastapi import FastAPI, Request, HTTPException
 from src.institutions import registry, create_institution, update_institution, current, resolve, scope, workspace_path, _current
-from src import documents
+from src import documents, config
 from fastapi.responses import HTMLResponse, FileResponse, JSONResponse
 from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
 
@@ -36,7 +36,7 @@ async def lifespan(app):
     yield
 
 
-app = FastAPI(title="Campus Policy Discovery Assistant", lifespan=lifespan)
+app = FastAPI(title="CampusDecoded", lifespan=lifespan)
 from src.whatif import router as whatif_router
 app.include_router(whatif_router)
 
@@ -202,13 +202,13 @@ async def sources_endpoint():
 @app.get("/health")
 async def health():
     if not _current.get():
-        return {'status':'ok','institutions':len(registry()),'providers':{name:{'configured':bool(cfg.get('api_key') and cfg.get('model'))} for name,cfg in PROVIDERS.items()}}
+        return {'status':'ok','storage_mode':config.STORAGE_MODE,'institutions':len(registry()),'providers':{name:{'configured':bool(cfg.get('api_key') and cfg.get('model'))} for name,cfg in PROVIDERS.items()}}
     try:
         chunks, eligible, cache = await asyncio.gather(
             asyncio.to_thread(get_collection_count), asyncio.to_thread(has_chunks),
             asyncio.to_thread(get_cache_stats),
         )
-        return {"status": "ok", "chunks": chunks, "production_ready": eligible,
+        return {"status": "ok", "storage_mode": config.STORAGE_MODE, "chunks": chunks, "production_ready": eligible,
                 "corpus_status": "approved_sources_available" if eligible else "no_approved_policies",
                 "cache": cache, "providers": {
                     name: {"configured": bool(cfg.get("api_key") and cfg.get("model"))}

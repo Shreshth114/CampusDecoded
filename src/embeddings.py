@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from fastembed import TextEmbedding
 from threading import RLock
 import time
+import os
 
 _MODEL_LOCK = RLock()
 from src.config import EMBED_MODEL, EMBED_BATCH_SIZE
@@ -25,7 +26,7 @@ def _get_model() -> TextEmbedding:
     if _model is None:
         started = time.perf_counter()
         print(f"[embeddings] Loading {EMBED_MODEL}...", flush=True)
-        _model = TextEmbedding(model_name=EMBED_MODEL)
+        _model = TextEmbedding(model_name=EMBED_MODEL, cache_dir=os.getenv("FASTEMBED_CACHE_PATH"))
         print(f"[embeddings] Model loaded in {time.perf_counter() - started:.2f}s; "
               f"inference batch size={EMBED_BATCH_SIZE}.", flush=True)
     return _model

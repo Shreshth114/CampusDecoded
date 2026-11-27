@@ -216,7 +216,9 @@ async function loadBenchmark() {
 async function refreshHealth() {
   try {
     const data = await api('/health');
-    if(data.chunks==null){byId('health').textContent='Local service ready · personal upload & analysis';return;}
+    const notice=byId('deployment-notice');
+    if(notice){notice.hidden=data.storage_mode!=='ephemeral';notice.textContent='Temporary demo: uploads, workspace links and indexes may be lost when the service sleeps, restarts or redeploys. Keep your original PDFs.';}
+    if(data.chunks==null){byId('health').textContent='CampusDecoded ready · personal upload & analysis';return;}
     byId('health').textContent = `${data.chunks} indexed chunks · ${data.production_ready ? 'approved corpus ready' : 'no approved policies'}`;
     byId('corpus-notice').textContent = data.production_ready ? 'Searching explicitly approved source versions. Citation checks validate references, not semantic faithfulness.' : 'No approved policy corpus is available. Answers will abstain until actual source documents are added and reviewed.';
   } catch { byId('health').textContent = 'Local service unavailable'; }

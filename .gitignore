@@ -39,3 +39,6 @@ evaluation/ps1/runs/**/*.json
 !evaluation/ps1/runs/reliability-paced-2026-11-16/ps1-14-raw.json
 *.pdf
 !tests/fixtures/personal_demo/*.pdf
+
+# Downloaded embedding model artifacts
+.cache/

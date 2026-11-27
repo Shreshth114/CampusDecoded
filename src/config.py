@@ -58,9 +58,11 @@ CHUNK_MAX_TOKENS = int(os.getenv("CHUNK_MAX_TOKENS", "350"))
 CHUNK_OVERLAP_FRACTION = float(os.getenv("CHUNK_OVERLAP_FRACTION", "0.12"))
 
 # ── Paths ──────────────────────────────────────────────────────
-DATA_RAW_DIR = _PROJECT_ROOT / "data" / "raw"
+DATA_ROOT = Path(os.getenv("CAMPUS_DATA_DIR", str(_PROJECT_ROOT / "data"))).expanduser().resolve()
+STORAGE_MODE = os.getenv("CAMPUS_STORAGE_MODE", "local")
+DATA_RAW_DIR = DATA_ROOT / "raw"
 DATA_DECOYS_DIR = _PROJECT_ROOT / "data" / "decoys"
-DATA_PROCESSED_DIR = _PROJECT_ROOT / "data" / "processed"
+DATA_PROCESSED_DIR = DATA_ROOT / "processed"
 MANIFEST_PATH = _PROJECT_ROOT / "data" / "processed" / "manifest.json"
 CACHE_PATH = _PROJECT_ROOT / "data" / "processed" / "cache.json"
 

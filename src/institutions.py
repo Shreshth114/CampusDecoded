@@ -8,10 +8,9 @@ import re
 import time
 import uuid
 from threading import RLock
-from src.config import PROJECT_ROOT
+from src.config import PROJECT_ROOT, DATA_ROOT
 from src.persistence import write_json
 
-DATA_ROOT = PROJECT_ROOT / 'data'
 _LOCK = RLock()
 _current = ContextVar('institution_context', default=None)
 

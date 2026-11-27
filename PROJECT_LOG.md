@@ -152,3 +152,7 @@ Integrity differs from the starting 237-file snapshot: 235 originals unchanged, 
 ## 2026-11-17 — Document Changes loading and partial-extraction fix
 
 Observed 33/47 candidate chunks in extraction while the UI displayed only Working. Added existing-activity polling, duplicate prevention, bounded requests, actionable errors and blocked-versus-empty-result handling. Fixed provider-failure completion fallthrough; saved batch IDs support resumable retries and partial caches cannot be compared. Legacy caches retain validated rules but require completion rechecking. Tests: 481 pass; new frontend behavior checks pass and run in the full suite. Restarted local server successfully (HTTP 200). No live LLM test, ingestion, embedding generation or PDF change. Exact scope/limits: docs/DOCUMENT_CHANGES_FIX.md.
+
+## 2026-11-27 — CampusDecoded rename and Render preparation
+
+User selected CampusDecoded, authorized GitHub repository rename and website branding, and chose a free temporary Render demo. Repository renamed to Shreshth114/CampusDecoded. Added host/port/worker deployment configuration, opt-in data/model-cache paths, a temporary-storage disclosure, version constraints and model-cache build helper. No local datasets, credentials or indexes are migrated. Render workspace confirmed by user. Cloud deployment/secret configuration and memory checks remain pending; see docs/RENDER_DEPLOYMENT.md for concrete scope and results.
