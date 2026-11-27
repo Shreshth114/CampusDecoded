@@ -1,0 +1,32 @@
+# Free TEMPORARY demo. Never promises durable uploads/indexes.
+services:
+  - type: web
+    name: campusdecoded
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt -c constraints-render.txt && python scripts/cache_embedding_model.py
+    startCommand: uvicorn src.server:app --host 0.0.0.0 --port $PORT --workers 1
+    healthCheckPath: /health
+    envVars:
+      - key: CAMPUS_DATA_DIR
+        value: /tmp/campusdecoded/data
+      - key: CAMPUS_STORAGE_MODE
+        value: ephemeral
+      - key: CHROMA_DIR
+        value: /tmp/campusdecoded/chroma
+      - key: FASTEMBED_CACHE_PATH
+        value: /opt/render/project/src/.cache/fastembed
+      - key: EMBED_BATCH_SIZE
+        value: "1"
+      - key: LLM_MAX_CONCURRENCY
+        value: "1"
+      - key: LLM_PRIMARY
+        value: groq
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        sync: false
+      - key: ADMIN_API_TOKEN
+        generateValue: true
+      - key: ANONYMIZED_TELEMETRY
+        value: "False"

@@ -1,4 +1,4 @@
-# Campus Policy Intelligence
+# CampusDecoded
 
 An institution-independent prototype for finding campus rules in uploaded documents and answering student questions with cited evidence.
 
@@ -9,8 +9,8 @@ The application combines a FastAPI backend, a browser dashboard, local text embe
 Use an isolated Python environment. The latest local verification used Python 3.14; other Python versions have not been verified for this snapshot.
 
 ```sh
-git clone https://github.com/Shreshth114/Campus-policy-HUb.git
-cd Campus-policy-HUb
+git clone https://github.com/Shreshth114/CampusDecoded.git
+cd CampusDecoded
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
@@ -70,3 +70,7 @@ Public documentation retains historical findings and their corrections. Full pri
 - [Prompt history](PROMPTS.md)
 - [Engineering decisions](DECISIONS.md)
 - [Publication scope](docs/REPOSITORY_PUBLICATION.md)
+
+## Render deployment
+
+See [Render deployment](docs/RENDER_DEPLOYMENT.md). The default Blueprint is a free, temporary demo. Uploaded files, workspace records and indexes are not durable. Deployment requires connecting your Render account and configuring secrets privately.
